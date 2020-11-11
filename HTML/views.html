@@ -32,48 +32,16 @@
             <div class="card-header">
                 <h4>Current Reservations</h4>
             </div>
-            <div class="card-body">
-                <!-- Form -->
-                <div class="border p-3 mb-3">
-                    <H3>Table #</h3>
-                    <hr class="my-4">
-                    <H3>ID: 11</h3>
-                    <H3>Name: Jung</h3>
-                    <H3>Email: abc@hotmail.com</h3>
-                    <H3>Phone: 123123123</h3>
-                </div>
-                <div class="border p-3 mb-3">
-                    <H3>Table #</h3>
-                    <hr class="my-4">
-                    <H3>ID: 11</h3>
-                    <H3>Name: Jung</h3>
-                    <H3>Email: abc@hotmail.com</h3>
-                    <H3>Phone: 123123123</h3>
-                </div>
+            <div class="card-body" id="tables">
+                
             </div>
         </div>
         <div class="card mb-3">
             <div class="card-header">
                 <h4>Waiting List</h4>
             </div>
-            <div class="card-body">
-                <!-- Form -->
-                <div class="border p-3 mb-3">
-                    <H3>Table #</h3>
-                    <hr class="my-4">
-                    <H3>ID: 11</h3>
-                    <H3>Name: Jung</h3>
-                    <H3>Email: abc@hotmail.com</h3>
-                    <H3>Phone: 123123123</h3>
-                </div>
-                <div class="border p-3 mb-3">
-                    <H3>Table #</h3>
-                    <hr class="my-4">
-                    <H3>ID: 11</h3>
-                    <H3>Name: Jung</h3>
-                    <H3>Email: abc@hotmail.com</h3>
-                    <H3>Phone: 123123123</h3>
-                </div>
+            <div class="card-body" id="waitingList">
+                
             </div>
         </div>
         <p>Control Panel</p>
@@ -82,6 +50,42 @@
             Wait List</a>
         </div>
     </div>
+    <script>
+        $.get('/api/tables', (table)=>{
+        const tableCard = $("#tables");  
+        let count = 1; 
+        table.forEach(function(table){
+            const div = `<div class="border p-3 mb-3">
+                    <H3>Table #${count}</h3>
+                    <hr class="my-4">
+                    <H3>Name: ${table.name}</h3>
+                    <H3>Email: ${table.email}</h3>
+                    <H3>Phone: ${table.phoneNumber}</h3>
+                    <H3>ID: ${table.id}</h3>
+                </div>`
+                tableCard.append(div);
+                count++;
+        })
+        })
+        $.get('/api/waitlists', (table)=>{
+        const waitingListCard = $("#waitingList");
+        let count = 1;
+        table.forEach(function(table){
+            const div = `<div class="border p-3 mb-3">
+                    <H3>WaitCount # ${count}</h3>
+                    <hr class="my-4">
+                    <H3>Name: ${table.name}</h3>
+                    <H3>Email: ${table.email}</h3>
+                    <H3>Phone: ${table.phoneNumber}</h3>
+                    <H3>ID: ${table.id}</h3>
+                </div>`
+                waitingListCard.append(div);
+                count++;
+        })
+        })
+    </script>
 </body>
+
+
 
 </html>
