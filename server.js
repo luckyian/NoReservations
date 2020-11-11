@@ -1,6 +1,6 @@
 var express = require("express");
 var path = require("path");
-
+var data = require("./JS/data");
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -10,12 +10,12 @@ app.use(express.json());
 
 app.get("/", function(req, res) {
     
-    res.sendFile(path.join(__dirname, "home.html"));
+    res.sendFile(path.join(__dirname, "./HTML/home.html"));
   });
   
-  // Displays all characters
-  app.get("/viewtables", function(req, res) {
-    return res.json(tables);
+  // Displays all tables
+  app.get("/api/tables", function(req, res) {
+    return res.json(data.table);
   });
   
   // Displays a single character, or returns false
