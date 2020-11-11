@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get("/", function(req, res) {
-    // res.send("Welcome to the Star Wars Page!")
+    
     res.sendFile(path.join(__dirname, "home.html"));
   });
   
@@ -33,7 +33,7 @@ app.get("/", function(req, res) {
     return res.json(false);
   });
   
-  // Create New Characters - takes in JSON input
+  // Create New Reservations - takes in JSON input
   app.post("/api/reservation", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
@@ -41,7 +41,7 @@ app.get("/", function(req, res) {
   
     console.log(newReservation);
   
-    // We then add the json the user sent to the character array
+    // We then add the json the user sent to the reservations array
     reservations.push(newReservations);
   
     // We then display the JSON to the users
