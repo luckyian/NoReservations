@@ -100,7 +100,7 @@ app.get("/", function(req, res) {
     console.log(newReservation);
   
     // We then add the json the user sent to the reservations array
-    reservations.push(newReservations);
+    table.push(newReservation);
   
     // We then display the JSON to the users
     res.json(newReservation);

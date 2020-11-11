@@ -24,7 +24,8 @@
             <h1><i class="fab fa-gripfire"></i> Hot Restaurant</h1>
             <hr class="my-4">
             <h2 class="mb-4">Make your reservation</h2>
-            <a class="btn btn-primary btn-lg" href="/viewtables" role="button"><i class="fas fa-clipboard-list"></i> View Tables</a>
+            <a class="btn btn-primary btn-lg" href="/viewtables" role="button"><i class="fas fa-clipboard-list"></i>
+                View Tables</a>
             <a class="btn btn-danger btn-lg" href="/" role="button"><i class="fas fa-home"></i></a>
         </div>
         <div class="card mb-3">
@@ -34,30 +35,45 @@
             <div class="card-body">
                 <form>
                     <div class="form-group">
-                      <label for="name">Name</label>
-                      <input type="name" class="form-control" id="name">
+                        <label for="name">Name</label>
+                        <input type="name" class="form-control" id="name">
                     </div>
                     <div class="form-group">
                         <label for="phoneNumber">Phone Number</label>
                         <input type="number" class="form-control" id="phoneNumber">
-                      </div>
+                    </div>
                     <div class="form-group">
-                      <label for="email">Email</label>
-                      <input type="email" class="form-control" id="email">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email">
                     </div>
                     <div class="form-group">
                         <label for="id">Unique ID</label>
                         <input type="id" class="form-control" id="id">
-                      </div>
+                    </div>
                     <button type="submit" id="submit" class="btn btn-primary">Submit</button>
-                  </form>
+                </form>
             </div>
         </div>
         <div class="mb-3">
-        <a href="/api/tables">API Table Link</a> | <a href="/api/waitlists">API
-            Wait List</a>
+            <a href="/api/tables">API Table Link</a> | <a href="/api/waitlists">API
+                Wait List</a>
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    $("#submit").on("click", (e) => {
+        e.preventDefault();
+        let user = new Object();
+        user["name"] = $("#name").val().trim();
+        user["phoneNumber"] = $("#phoneNumber").val().trim();
+        user["email"] = $("#email").val().trim();
+        user["id"] = $("#id").val().trim();
+
+        console.log(user);
+
+        $.post("/api/reservation", user);
+
+    });
+</script>
 
 </html>
