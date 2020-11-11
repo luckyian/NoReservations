@@ -1,6 +1,49 @@
 var express = require("express");
 var path = require("path");
-var data = require("./JS/data");
+
+
+//data
+const table = [
+  {
+      Name: "Ken",
+      Phone: "",
+      Email: "",
+      UniqueID: 1
+  },
+  {
+      Name: "",
+      Phone: "",
+      Email: "",
+      UniqueID: 2
+  },
+  {
+      Name: "",
+      Phone: "",
+      Email: "",
+      UniqueID: 3
+  },
+  {
+      Name: "",
+      Phone: "",
+      Email: "",
+      UniqueID: 4
+  },
+  {
+      Name: "",
+      Phone: "",
+      Email: "",
+      UniqueID: 5
+  }
+]
+
+const waitList = [
+  {
+      Name: "test",
+      Phone: "test",
+      Email: "test",
+      UniqueID: 6
+  }
+]
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -12,10 +55,25 @@ app.get("/", function(req, res) {
     
     res.sendFile(path.join(__dirname, "./HTML/home.html"));
   });
+
+  app.get("/viewtables", function(req, res) {
+    
+    res.sendFile(path.join(__dirname, "./HTML/views.html"));
+  });
+
+  app.get("/reservation", function(req, res) {
+    
+    res.sendFile(path.join(__dirname, "./HTML/form.html"));
+  });
   
   // Displays all tables
   app.get("/api/tables", function(req, res) {
-    return res.json(data.table);
+    return res.json(table);
+  });
+
+  // Displays all reservations
+  app.get("/api/waitlists", function(req, res) {
+    return res.json(waitList);
   });
   
   // Displays a single character, or returns false
@@ -53,3 +111,6 @@ app.get("/", function(req, res) {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+
+  
