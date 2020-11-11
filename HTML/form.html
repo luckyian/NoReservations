@@ -71,7 +71,17 @@
 
         console.log(user);
 
-        $.post("/api/reservation", user);
+        $.get('/api/tables', (table) => {
+            console.log(table.length);
+            if(table.length <= 5){
+                $.post("/api/reservation", user);
+                
+            }else{
+                $.post("/api/waitlists", user);
+
+            }
+        });
+        
 
     });
 </script>
