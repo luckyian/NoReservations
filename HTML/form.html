@@ -73,11 +73,13 @@
 
         $.get('/api/tables', (table) => {
             console.log(table.length);
-            if(table.length <= 5){
+            if(table.length <= 4){
                 $.post("/api/reservation", user);
+                alert("You have been added to the reservation list");
                 
             }else{
                 $.post("/api/waitlists", user);
+                alert("You have been added to the wait list, please be patient.");
 
             }
         });
